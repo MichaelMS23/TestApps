@@ -1,0 +1,7 @@
+@model TestApps.Models.Product
+<h1>Delete Product</h1>
+<p>Are you sure you want to delete "@Model.Name"?</p>
+<form method="post">
+    <button type="submit">Confirm Delete</button>
+    <a asp-action="Index">Cancel</a>
+</form>
