@@ -9,7 +9,7 @@ using TestApps.Models;
 
 namespace TestApps.Controllers
 {
-    [Authorize] // 🔐 default: protect all actions
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly AppDbContext _context;
@@ -19,17 +19,17 @@ namespace TestApps.Controllers
             _context = context;
         }
 
-        [AllowAnonymous] // ✅ TEMPORARILY ALLOW anonymous access
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Products.ToListAsync());
         }
 
-        [AllowAnonymous] // ✅ TEMPORARILY ALLOW
+        [AllowAnonymous]
         public IActionResult Create() => View();
 
         [HttpPost]
-        [AllowAnonymous] // ✅ TEMPORARILY ALLOW
+        [AllowAnonymous]
         public async Task<IActionResult> Create(Product product)
         {
             if (!ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace TestApps.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AllowAnonymous] // ✅ TEMPORARILY ALLOW
+        [AllowAnonymous]
         public async Task<IActionResult> Edit(int id)
         {
             var product = await _context.Products.FindAsync(id);
@@ -50,7 +50,7 @@ namespace TestApps.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous] // ✅ TEMPORARILY ALLOW
+        [AllowAnonymous]
         public async Task<IActionResult> Edit(int id, Product product)
         {
             if (id != product.Id)
@@ -63,7 +63,7 @@ namespace TestApps.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AllowAnonymous] // ✅ TEMPORARILY ALLOW
+        [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _context.Products.FindAsync(id);
