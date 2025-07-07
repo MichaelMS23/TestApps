@@ -23,7 +23,7 @@ namespace TestApps.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_secret);
 
-            var notBefore = DateTime.UtcNow.AddSeconds(-5); // ✅ offset NotBefore 5 seconds into the past
+            var notBefore = DateTime.UtcNow.AddSeconds(-5);
             var expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_expDate)); // still uses UtcNow + X minutes
 
             var tokenDescriptor = new SecurityTokenDescriptor
